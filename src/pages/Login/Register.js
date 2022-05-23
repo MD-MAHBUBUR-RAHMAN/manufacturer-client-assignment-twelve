@@ -7,6 +7,7 @@ import {
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
+import useToken from "../Hooks/useToken";
 import Loading from "../Shared/Loading";
 
 const Register = () => {
@@ -19,6 +20,7 @@ const Register = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [token] = useToken(user || gUser);
   const navigate = useNavigate();
 
   if (gLoading || loading || updating) {
@@ -39,7 +41,7 @@ const Register = () => {
     console.log(data);
   };
 
-  if (gUser || user) {
+  if (token) {
     navigate("/");
   }
   return (

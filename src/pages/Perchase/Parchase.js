@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
@@ -24,12 +25,30 @@ const Parchase = () => {
     return <Loading />;
   }
   const onSubmit = (data) => {
-    console.log(data);
-    reset();
+    const alldata = { ...data, product };
+    // console.log(alldata);
+    fetch("http://localhost:5000/orders", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(alldata),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.insertedId) {
+          toast.success("Product Addeded successfully");
+          reset();
+          //   console.log("doctor", inserted);
+        } else {
+          toast.error("fail to add Product");
+        }
+        // console.log(result);
+      });
   };
 
   const { price, img, quantity, name, detail, minimum } = product;
-  // const { maximum } = quantity;
+  // const { newMin } = parseInt(minimum);
 
   return (
     <>
@@ -143,14 +162,14 @@ const Parchase = () => {
                     <span className="label-text">Add Quantity</span>
                   </label>
                   <input
-                    {...register("quantity", {
+                    {...register("orderQuantity", {
                       required: {
                         value: true,
-                        message: "Quantity Number is requied",
+                        message: "Purchase Quantity is requied",
                       },
                       // minLength: {
-                      //   value: `${minimum}`,
-                      //   message: `Must be ${minimum} Unites or over`,
+                      //   value: `${newMin}`,
+                      //   message: `Must be ${newMin} Unites or over`,
                       // },
 
                       // maxLength: {
@@ -162,18 +181,18 @@ const Parchase = () => {
                     className="input input-bordered w-full"
                   />
                   <label className="label">
-                    {errors?.quantity?.type === "required" && (
+                    {errors?.orderQuantity?.type === "required" && (
+                      <span className="label-text-alt text-red-500">
+                        {errors.orderQuantity.message}
+                      </span>
+                    )}
+
+                    {/* {errors?.quantity?.type === "minLength" && (
                       <span className="label-text-alt text-red-500">
                         {errors.quantity.message}
                       </span>
-                    )}
-                    {/* 
-                    {errors?.quantity?.type === "minLength" && (
-                      <span className="label-text-alt text-red-500">
-                        {errors.quantity.message}
-                      </span>
-                    )}
-                    {errors?.quantity?.type === "maxLength" && (
+                    )} */}
+                    {/* {errors?.quantity?.type === "maxLength" && (
                       <span className="label-text-alt text-red-500">
                         {errors.quantity.message}
                       </span>
@@ -181,13 +200,15 @@ const Parchase = () => {
                   </label>
                 </div>
 
-                <input
-                  className="btn w-full max-w-xs text-white"
-                  type="submit"
-                  value="Order"
-                  // disabled={(quantity > maximum || quantity < minimum) && true}
-                  // disabled={quantity < minimum}
-                />
+                <div className="flex justify-center mb-5">
+                  <input
+                    className="btn w-full max-w-xs text-white"
+                    type="submit"
+                    value="Order"
+                    // disabled={(quantity > maximum || quantity < minimum) && true}
+                    // disabled={quantity < minimum}
+                  />
+                </div>
               </form>
             </div>
           </div>
