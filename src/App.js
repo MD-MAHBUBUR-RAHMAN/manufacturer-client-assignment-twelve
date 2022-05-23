@@ -26,14 +26,17 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/" element={<Home />}>
+          Home
+        </Route>
         <Route
-          path="/purchase"
+          path="/purchase/:id"
           element={
             <RequireAuth>
               <Parchase />
             </RequireAuth>
           }
-        ></Route>
+        />
         <Route path="/blog" element={<Blog />}></Route>
         <Route path="/portfolio" element={<MyPortFolio />}></Route>
         <Route path="/dashboard" element={<Dashboard />}>

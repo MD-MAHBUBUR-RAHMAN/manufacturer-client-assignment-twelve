@@ -13,7 +13,7 @@ const Nav = () => {
   const menuItems = (
     <>
       <li>
-        <Link to="/purchase">PURCHASE</Link>
+        <Link to="/">HOME</Link>
       </li>
       <li>
         <Link to="/blog">BLOG</Link>
