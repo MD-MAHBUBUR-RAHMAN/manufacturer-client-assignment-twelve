@@ -8,7 +8,7 @@ import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
 
 const Parchase = () => {
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   // console.log(user);
   const {
     register,
@@ -24,9 +24,19 @@ const Parchase = () => {
   if (isLoading || loading) {
     return <Loading />;
   }
+
+  const { price, img, quantity, name, detail, minimum } = product;
+
   const onSubmit = (data) => {
     const alldata = { ...data, product };
     // console.log(alldata);
+    const { orderQuantity, ...rest } = data;
+    if (orderQuantity > parseInt(quantity)) {
+      return toast.error(`You Cannot Order Over ${quantity} units`);
+    }
+    if (orderQuantity < parseInt(minimum)) {
+      return toast.error(`Minimum Order ${minimum} Units Please`);
+    }
     fetch("http://localhost:5000/orders", {
       method: "POST",
       headers: {
@@ -39,16 +49,13 @@ const Parchase = () => {
         if (result.insertedId) {
           toast.success("Product Addeded successfully");
           reset();
-          //   console.log("doctor", inserted);
+          //   console.log("purchase", inserted);
         } else {
           toast.error("fail to add Product");
         }
         // console.log(result);
       });
   };
-
-  const { price, img, quantity, name, detail, minimum } = product;
-  // const { newMin } = parseInt(minimum);
 
   return (
     <>
@@ -79,7 +86,7 @@ const Parchase = () => {
           </div>
         </div>
       </div>
-      {/* -------------------------------------------------------- */}
+      {/* -------------------------Form------------------------------- */}
       <div className="mb-20">
         <div className="w-3/4 mx-auto bg-base-100 mt-16">
           <div className="shadow-xl">
@@ -167,15 +174,6 @@ const Parchase = () => {
                         value: true,
                         message: "Purchase Quantity is requied",
                       },
-                      // minLength: {
-                      //   value: `${newMin}`,
-                      //   message: `Must be ${newMin} Unites or over`,
-                      // },
-
-                      // maxLength: {
-                      //   value: `${quantity}`,
-                      //   message: `Cannot order over ${quantity} Unites`,
-                      // },
                     })}
                     type="number"
                     className="input input-bordered w-full"
@@ -186,27 +184,14 @@ const Parchase = () => {
                         {errors.orderQuantity.message}
                       </span>
                     )}
-
-                    {/* {errors?.quantity?.type === "minLength" && (
-                      <span className="label-text-alt text-red-500">
-                        {errors.quantity.message}
-                      </span>
-                    )} */}
-                    {/* {errors?.quantity?.type === "maxLength" && (
-                      <span className="label-text-alt text-red-500">
-                        {errors.quantity.message}
-                      </span>
-                    )} */}
                   </label>
                 </div>
-
+                {/* -----Submit Input--------- */}
                 <div className="flex justify-center mb-5">
                   <input
                     className="btn w-full max-w-xs text-white"
                     type="submit"
                     value="Order"
-                    // disabled={(quantity > maximum || quantity < minimum) && true}
-                    // disabled={quantity < minimum}
                   />
                 </div>
               </form>
