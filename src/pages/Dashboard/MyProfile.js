@@ -5,7 +5,7 @@ import Loading from "../Shared/Loading";
 
 const MyProfile = () => {
   const [users, loading] = useAuthState(auth);
-  console.log(users);
+  // console.log(users);
   if (loading) {
     return <Loading />;
   }

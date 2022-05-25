@@ -13,9 +13,9 @@ const Dashboard = () => {
         >
           Open drawer
         </label>
-        <h2 className="text-center text-primary text-xl md:text-5xl text-bold mt-5">
+        {/* <h2 className="text-center text-primary text-xl md:text-5xl text-bold mt-5">
           Welcome To DashBoard
-        </h2>
+        </h2> */}
         <Outlet></Outlet>
       </div>
 
