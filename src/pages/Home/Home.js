@@ -2,16 +2,18 @@ import React from "react";
 import Footer from "../Shared/Footer";
 import Banner from "./Banner";
 import BusinessSummery from "./BusinessSummery";
+import Distributor from "./Distributor";
 import Products from "./Products";
-import Review from "./Review";
+import Reviews from "./Reviews";
 
 const Home = () => {
   return (
     <div>
       <Banner />
-      <BusinessSummery />
       <Products />
-      <Review />
+      <BusinessSummery />
+      <Distributor />
+      <Reviews />
       <Footer />
     </div>
   );

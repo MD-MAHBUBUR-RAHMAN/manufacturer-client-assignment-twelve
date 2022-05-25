@@ -8,7 +8,6 @@ import Loading from "../Shared/Loading";
 const AddReview = () => {
   const [user, loading] = useAuthState(auth);
   const name = user?.displayName;
-  const img = user?.photoURL;
   const email = user?.email;
   const {
     register,
