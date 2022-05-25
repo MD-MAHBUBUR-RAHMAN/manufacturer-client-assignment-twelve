@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
@@ -22,10 +22,16 @@ const Register = () => {
   } = useForm();
   const [token] = useToken(user || gUser);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [navigate, token]);
 
   if (gLoading || loading || updating) {
     return <Loading />;
   }
+
   let signupErroe;
   if (gError || error || updatingError) {
     signupErroe = (
@@ -34,16 +40,12 @@ const Register = () => {
       </small>
     );
   }
+
   const onSubmit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
-
-    console.log(data);
+    // console.log(data);
   };
-
-  if (token) {
-    navigate("/");
-  }
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="card w-96 bg-base-100 shadow-xl">

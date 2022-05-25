@@ -4,6 +4,7 @@
     "price": "$370",
     "img": "https://i.ibb.co/DQhrs6x/img4.jpg",
     "quantity": 2578,
+    "minimum": "150",
     "name": "STONE CUTTER",
     "email": "matthewswalsh@candecor.com",
     "detail": "The stone cutting equipment cutting saw is stable, low noise, and dust-free. A complete after-sales service team understands real customer needs.Inquiry now! Excellent Service. Purchase from Factory‎. Good Quality. Your choice. Good Prices.\r\n"
@@ -13,6 +14,7 @@
     "price": "$242",
     "img": "https://i.ibb.co/4WT61V7/img2.jpg",
     "quantity": 3235,
+    "minimum": "240",
     "name": "HAMMER DRILL",
     "email": "suewilder@candecor.com",
     "detail": "Hammer drills have a cam-action or percussion hammering mechanism, in which two sets of toothed gears mechanically interact with each other to hammer while rotating the drill bit. With cam-action drills, the chuck has a mechanism whereby the entire chuck and bit move forward and backward on the axis of rotation.\r\n"
@@ -21,7 +23,8 @@
     "_id": "628a57803211019e5d7b80d5",
     "price": "$5",
     "img": "https://i.ibb.co/4fz1K17/img5.jpg",
-    "quantity": 3380,
+    "quantity": 7380,
+    "minimum": "550",
     "name": "Drill BIT",
     "email": "savannahblair@candecor.com",
     "detail": "Most drill bits for consumer use have straight shanks. For heavy duty drilling in industry, bits with tapered shanks are sometimes used. Other types of shank used include hex-shaped, and various proprietary quick release systems.The diameter-to-length ratio of the drill bit is usually between 1:1 and 1:10.\r\n"
