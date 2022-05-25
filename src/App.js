@@ -22,38 +22,40 @@ import RequireAuth from "./pages/Login/RequireAuth";
 
 function App() {
   return (
-    <div className="container mx-auto">
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/" element={<Home />}>
-          Home
-        </Route>
-        <Route
-          path="/purchase/:id"
-          element={
-            <RequireAuth>
-              <Parchase />
-            </RequireAuth>
-          }
-        />
-        <Route path="/blog" element={<Blog />}></Route>
-        <Route path="/portfolio" element={<MyPortFolio />}></Route>
-        <Route path="/dashboard" element={<Dashboard />}>
-          <Route index element={<MyOrder />} />
-          <Route path="addreview" element={<AddReview />} />
-          <Route path="myprofile" element={<MyProfile />} />
-          <Route path="manageorder" element={<ManageAllOrder />} />
-          <Route path="addproduct" element={<AddProduct />} />
-          <Route path="makeadmin" element={<MakeAdmin />} />
-          <Route path="manageproduct" element={<ManageProduct />} />
-        </Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/register" element={<Register />}></Route>
-        <Route path="/*" element={<Notfound />}></Route>
-      </Routes>
-      <ToastContainer />
-    </div>
+    <>
+      <div className="container mx-auto">
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home />}>
+            Home
+          </Route>
+          <Route
+            path="/purchase/:id"
+            element={
+              <RequireAuth>
+                <Parchase />
+              </RequireAuth>
+            }
+          />
+          <Route path="/blog" element={<Blog />}></Route>
+          <Route path="/portfolio" element={<MyPortFolio />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}>
+            <Route index element={<MyOrder />} />
+            <Route path="addreview" element={<AddReview />} />
+            <Route path="myprofile" element={<MyProfile />} />
+            <Route path="manageorder" element={<ManageAllOrder />} />
+            <Route path="addproduct" element={<AddProduct />} />
+            <Route path="makeadmin" element={<MakeAdmin />} />
+            <Route path="manageproduct" element={<ManageProduct />} />
+          </Route>
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
+          <Route path="/*" element={<Notfound />}></Route>
+        </Routes>
+        <ToastContainer />
+      </div>
+    </>
   );
 }
 

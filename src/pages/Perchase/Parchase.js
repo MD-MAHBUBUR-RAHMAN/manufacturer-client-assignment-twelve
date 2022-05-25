@@ -28,7 +28,7 @@ const Parchase = () => {
   const { price, img, quantity, name, detail, minimum } = product;
 
   const onSubmit = (data) => {
-    const alldata = { ...data, product };
+    const alldata = { ...data, img, price, product: name };
     // console.log(alldata);
     const { orderQuantity, ...rest } = data;
     if (orderQuantity > parseInt(quantity)) {
