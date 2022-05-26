@@ -5,7 +5,11 @@ import Loading from "../Shared/Loading";
 const MakeAdmin = () => {
   const url = `http://localhost:5000/user`;
   const { data: allusers, isLoading } = useQuery("allusers", () =>
-    fetch(url).then((res) => res.json())
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

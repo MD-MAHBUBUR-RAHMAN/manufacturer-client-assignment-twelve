@@ -19,7 +19,11 @@ const Parchase = () => {
   const { id } = useParams();
   const url = `http://localhost:5000/product/${id}`;
   const { data: product, isLoading } = useQuery(["product", id], () =>
-    fetch(url).then((res) => res.json())
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading || loading) {
     return <Loading />;

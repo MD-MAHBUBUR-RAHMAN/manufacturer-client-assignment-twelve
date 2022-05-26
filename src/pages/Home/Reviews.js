@@ -6,7 +6,11 @@ import Review from "./Review";
 const Reviews = () => {
   const url = `http://localhost:5000/review`;
   const { data: reviews, isLoading } = useQuery("reviews", () =>
-    fetch(url).then((res) => res.json())
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    }).then((res) => res.json())
   );
   if (isLoading) {
     return <Loading />;

@@ -8,7 +8,11 @@ const ManageAllOrder = () => {
   const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
     const url = `http://localhost:5000/orders`;
-    fetch(url)
+    fetch(url, {
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setAllOrders(data));
   }, [allOrders]);
