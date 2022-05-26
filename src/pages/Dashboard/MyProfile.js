@@ -11,7 +11,9 @@ const MyProfile = () => {
   }
   return (
     <div>
-      <h3 className="text-center text-primary">My Profile</h3>
+      <h3 className="text-center text-xl md:text-4xl font-semibold text-slate-900 my-5">
+        {users?.displayName}'s Profile
+      </h3>
     </div>
   );
 };

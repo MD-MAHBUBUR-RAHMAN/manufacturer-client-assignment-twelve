@@ -27,11 +27,11 @@ const MyOrder = () => {
         Email : {email}
       </p>
       <div className="overflow-x-auto">
-        <table className="table w-full">
+        <table className="table w-full ">
           <thead>
             <tr>
               <th>No.</th>
-              <th>email</th>
+              <th>Image</th>
               <th>Order</th>
               <th>Remove Order</th>
               <th>Payment</th>
@@ -41,13 +41,19 @@ const MyOrder = () => {
             {orders.map((order, index) => (
               <tr key={order._id}>
                 <td>{index + 1}</td>
-                <td>{order.email}</td>
+                <td>
+                  <div className="avatar">
+                    <div className="w-12 md:w-24 rounded-full">
+                      <img src={order.img} alt="" />
+                    </div>
+                  </div>
+                </td>
                 <td>{order.orderQuantity} units</td>
                 <td>
-                  <button className="btn btn-xs">Delet</button>{" "}
+                  <button className="btn btn-xs md:btn-sm">Delet</button>{" "}
                 </td>
                 <td>
-                  <button className="btn btn-xs">pay</button>{" "}
+                  <button className="btn btn-xs md:btn-sm">pay</button>{" "}
                 </td>
               </tr>
             ))}

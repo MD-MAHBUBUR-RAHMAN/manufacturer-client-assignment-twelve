@@ -37,7 +37,9 @@ const AddReview = () => {
   };
   return (
     <div>
-      <h3 className="text-center text-primary">MY Review</h3>
+      <h3 className="text-center text-xl md:text-4xl font-semibold text-slate-900 my-5">
+        MY Review
+      </h3>
 
       <form
         className="flex flex-col border md:p-5 rounded-lg mx-2 my-10"

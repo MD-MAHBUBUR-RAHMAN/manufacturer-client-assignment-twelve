@@ -22,7 +22,7 @@ const AddProduct = () => {
   };
   return (
     <div className="md:w-3/4 mx-auto my-10">
-      <h3 className="text-center text-primary text-lg md:text-4xl ">
+      <h3 className="text-center text-xl md:text-4xl font-semibold text-slate-900 my-5">
         Add Product
       </h3>
       <form

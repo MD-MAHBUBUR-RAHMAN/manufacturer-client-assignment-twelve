@@ -1,16 +1,9 @@
 import React from "react";
-import { useQuery } from "react-query";
-import Loading from "../Shared/Loading";
+import useProducts from "../Hooks/useProducts";
 import Product from "./Product";
 
 const Products = () => {
-  const url = `http://localhost:5000/product`;
-  const { data: products, isLoading } = useQuery("Products", () =>
-    fetch(url).then((res) => res.json())
-  );
-  if (isLoading) {
-    return <Loading />;
-  }
+  const [products] = useProducts([]);
   return (
     <>
       <h2 className="text-center text-xl font-semibold md:text-5xl text-secondary my-10">
