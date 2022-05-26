@@ -1,8 +1,24 @@
 import React from "react";
+import { toast } from "react-toastify";
 import useProducts from "../Hooks/useProducts";
 
 const ManageProduct = () => {
   const [products] = useProducts([]);
+  const handleDelete = (id) => {
+    const proceed = window.confirm("Are you sure you want to delete?");
+    if (proceed) {
+      fetch(`http://localhost:5000/product/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            toast.success("Product Deleted Successfully");
+          }
+        });
+    }
+  };
+
   return (
     <div>
       <h3 className="text-center text-xl md:text-4xl font-semibold text-slate-900 my-5">
@@ -34,7 +50,12 @@ const ManageProduct = () => {
                 <td>{product.name}</td>
                 <td>{product.quantity} units</td>
                 <td>
-                  <button className="btn btn-xs md:btn-sm">Delet</button>{" "}
+                  <button
+                    onClick={() => handleDelete(product._id)}
+                    className="btn btn-xs md:btn-sm"
+                  >
+                    Delet
+                  </button>
                 </td>
                 {/* <td>
                   <button className="btn btn-xs md:btn-sm">pay</button>{" "}

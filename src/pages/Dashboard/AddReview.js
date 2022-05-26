@@ -95,7 +95,7 @@ const AddReview = () => {
           </label>
         </div>
         <input
-          className="block mx-auto bg-sky-500 px-5 py-3 mt-10 mb-5 rounded-md hover:bg-slate-700 hover:text-white md:w-36 border-none text-black md:font-semibold "
+          className="block mx-auto px-5 py-3 mt-10 mb-5 rounded-md bg-slate-700 text-white md:w-36 border-none  md:font-semibold "
           type="submit"
         />
       </form>

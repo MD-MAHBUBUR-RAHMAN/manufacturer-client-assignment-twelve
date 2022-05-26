@@ -1,18 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useQuery } from "react-query";
 import auth from "../../firebase.init";
 import Loading from "../Shared/Loading";
+import DeleteOrderModal from "./DeleteOrderModal";
 
 const MyOrder = () => {
   const [users, loading] = useAuthState(auth);
   const email = users?.email;
-  const url = `http://localhost:5000/orders/${email}`;
-  const { data: orders, isLoading } = useQuery("Products", () =>
-    fetch(url).then((res) => res.json())
-  );
+  const [deletingOrder, setDeletingOrder] = useState(null);
+  const [orders, setOrders] = useState([]);
+  useEffect(() => {
+    const url = `http://localhost:5000/orders/${email}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => setOrders(data));
+  }, [orders, email]);
 
-  if (loading || isLoading) {
+  if (loading) {
     return <Loading />;
   }
   return (
@@ -50,16 +54,28 @@ const MyOrder = () => {
                 </td>
                 <td>{order.orderQuantity} units</td>
                 <td>
-                  <button className="btn btn-xs md:btn-sm">Delet</button>{" "}
+                  <label
+                    onClick={() => setDeletingOrder(order)}
+                    htmlFor="delete-confirm-modal"
+                    className="btn btn-xs md:btn-sm"
+                  >
+                    Delete
+                  </label>
                 </td>
                 <td>
-                  <button className="btn btn-xs md:btn-sm">pay</button>{" "}
+                  <button className="btn btn-xs md:btn-sm">pay</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+      {deletingOrder && (
+        <DeleteOrderModal
+          deletingOrder={deletingOrder}
+          setDeletingOrder={setDeletingOrder}
+        />
+      )}
     </div>
   );
 };
