@@ -3,7 +3,7 @@ import React from "react";
 const DeleteOrderModal = ({ deletingOrder, setDeletingOrder }) => {
   const { product, _id } = deletingOrder;
   const handleDelete = () => {
-    fetch(`http://localhost:5000/orders/${_id}`, {
+    fetch(`https://powerful-dawn-82606.herokuapp.com/orders/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {

@@ -17,7 +17,7 @@ const Parchase = () => {
     reset,
   } = useForm();
   const { id } = useParams();
-  const url = `http://localhost:5000/product/${id}`;
+  const url = `https://powerful-dawn-82606.herokuapp.com/product/${id}`;
   const { data: product, isLoading } = useQuery(["product", id], () =>
     fetch(url, {
       headers: {
@@ -41,7 +41,7 @@ const Parchase = () => {
     if (orderQuantity < parseInt(minimum)) {
       return toast.error(`Minimum Order ${minimum} Units Please`);
     }
-    fetch("http://localhost:5000/orders", {
+    fetch("https://powerful-dawn-82606.herokuapp.com/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",

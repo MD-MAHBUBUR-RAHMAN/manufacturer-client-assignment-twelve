@@ -12,7 +12,7 @@ const MyOrder = () => {
   const [orders, setOrders] = useState([]);
   // console.log(orders);
   useEffect(() => {
-    const url = `http://localhost:5000/orders/${email}`;
+    const url = `https://powerful-dawn-82606.herokuapp.com/orders/${email}`;
     fetch(url, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

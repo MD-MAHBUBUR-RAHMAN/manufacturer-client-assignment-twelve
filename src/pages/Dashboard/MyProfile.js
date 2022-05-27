@@ -19,7 +19,7 @@ const MyProfile = () => {
   const email = users?.email;
   const onSubmit = (data) => {
     // console.log(data);
-    fetch(`http://localhost:5000/users/${email}`, {
+    fetch(`https://powerful-dawn-82606.herokuapp.com/users/${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

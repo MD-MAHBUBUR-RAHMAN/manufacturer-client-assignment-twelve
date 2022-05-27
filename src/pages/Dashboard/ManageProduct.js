@@ -7,7 +7,7 @@ const ManageProduct = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure you want to delete?");
     if (proceed) {
-      fetch(`http://localhost:5000/product/${id}`, {
+      fetch(`https://powerful-dawn-82606.herokuapp.com/product/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

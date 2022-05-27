@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import Loading from "../Shared/Loading";
 
 const MakeAdmin = () => {
-  const url = `http://localhost:5000/user`;
+  const url = `https://powerful-dawn-82606.herokuapp.com/user`;
   const {
     data: allusers,
     isLoading,
@@ -20,7 +20,7 @@ const MakeAdmin = () => {
     return <Loading />;
   }
   const createAdmin = (email) => {
-    fetch(`http://localhost:5000/user/admin/${email}`, {
+    fetch(`https://powerful-dawn-82606.herokuapp.com/user/admin/${email}`, {
       method: "PUT",
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")} `,

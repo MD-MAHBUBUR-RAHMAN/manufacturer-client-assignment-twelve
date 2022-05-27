@@ -4,7 +4,7 @@ import Loading from "../Shared/Loading";
 import Review from "./Review";
 
 const Reviews = () => {
-  const url = `http://localhost:5000/review`;
+  const url = `https://powerful-dawn-82606.herokuapp.com/review`;
   const { data: reviews, isLoading } = useQuery("reviews", () =>
     fetch(url, {
       headers: {

@@ -7,7 +7,7 @@ const ManageAllOrder = () => {
   const [deletingOrder, setDeletingOrder] = useState(null);
   const [allOrders, setAllOrders] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/orders`;
+    const url = `https://powerful-dawn-82606.herokuapp.com/orders`;
     fetch(url, {
       headers: {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
