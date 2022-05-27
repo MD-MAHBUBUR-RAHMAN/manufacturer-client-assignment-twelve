@@ -19,6 +19,7 @@ import AddProduct from "./pages/Dashboard/AddProduct";
 import MakeAdmin from "./pages/Dashboard/MakeAdmin";
 import ManageProduct from "./pages/Dashboard/ManageProduct";
 import RequireAuth from "./pages/Login/RequireAuth";
+import ResetPassword from "./pages/Login/ResetPassword";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
             <Route path="manageproduct" element={<ManageProduct />} />
           </Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/reset" element={<ResetPassword />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/*" element={<Notfound />}></Route>
         </Routes>

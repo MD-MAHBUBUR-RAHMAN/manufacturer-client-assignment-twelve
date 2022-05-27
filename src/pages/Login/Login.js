@@ -121,6 +121,9 @@ const Login = () => {
               value="Login"
             />
           </form>
+          <button className="block w-full md:w-36 border-none text-red-400 md:font-semibold ">
+            <Link to="/reset">Reset Password</Link>
+          </button>
           <p>
             <small>
               New To This website?

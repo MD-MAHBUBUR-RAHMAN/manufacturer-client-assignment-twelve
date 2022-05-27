@@ -11,9 +11,9 @@ const DeleteOrderModal = ({ deletingOrder, setDeletingOrder }) => {
       })
       .then((data) => {
         // console.log("from deleteOrder model", data);
-        // if (data.deletedCount > 0) {
-        // setDeletingOrder(null);
-        // }
+        if (data.deletedCount > 0) {
+          setDeletingOrder(null);
+        }
       });
   };
   return (
@@ -38,7 +38,7 @@ const DeleteOrderModal = ({ deletingOrder, setDeletingOrder }) => {
               </label>
             </button>
             <label htmlFor="delete-confirm-modal" className="btn btn-xs">
-              Cancel
+              Close
             </label>
           </div>
         </div>
