@@ -8,11 +8,11 @@ If you Want to visit My site [click here please]()
 
 ## Used TechNology:
 
--Firebase Authentication System
--tailwind css
--ReactQueary
--ReactHookForm
--DaisyUi library
+- Firebase Authentication System
+- tailwind css
+- ReactQueary
+- ReactHookForm
+- DaisyUi library
 
 ## Available Scripts
 
