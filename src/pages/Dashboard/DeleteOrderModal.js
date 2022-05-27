@@ -7,11 +7,10 @@ const DeleteOrderModal = ({ deletingOrder, setDeletingOrder }) => {
       method: "DELETE",
     })
       .then((res) => {
-        console.log("in response", res);
         res.json();
       })
       .then((data) => {
-        console.log("from deleteOrder model", data);
+        // console.log("from deleteOrder model", data);
         // if (data.deletedCount > 0) {
         // setDeletingOrder(null);
         // }

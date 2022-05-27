@@ -8,7 +8,9 @@ const MyOrder = () => {
   const [users, loading] = useAuthState(auth);
   const email = users?.email;
   const [deletingOrder, setDeletingOrder] = useState(null);
+  // console.log(deletingOrder);
   const [orders, setOrders] = useState([]);
+  // console.log(orders);
   useEffect(() => {
     const url = `http://localhost:5000/orders/${email}`;
     fetch(url, {
@@ -17,7 +19,9 @@ const MyOrder = () => {
       },
     })
       .then((res) => res.json())
-      .then((data) => setOrders(data));
+      .then((data) => {
+        setOrders(data);
+      });
   }, [orders, email]);
 
   if (loading) {

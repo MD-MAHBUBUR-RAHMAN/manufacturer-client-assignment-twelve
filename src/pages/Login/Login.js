@@ -39,9 +39,7 @@ const Login = () => {
       </small>
     );
   }
-  // if (gUser || user) {
-  //   navigate("/");
-  // }
+
   const onSubmit = (data) => {
     signInWithEmailAndPassword(data.email, data.password);
     // console.log(data);
@@ -125,7 +123,7 @@ const Login = () => {
           </form>
           <p>
             <small>
-              New To Doctor Portal?{" "}
+              New To This website?
               <Link to="/register" className="text-primary">
                 Create New Account
               </Link>
